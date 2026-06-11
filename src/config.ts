@@ -5,11 +5,11 @@
  */
 
 let appConfig = {
-  GEMINI_API_KEY: "",
+  GEMINI_API_KEY: "AQ.Ab8RN6I9psQwcp9Zos39sTm81xCRRtf-ZAqxP0uypAseZR6bsQ",
   GNEWS_API_KEY: "4cbb11c0a29a782f763aa3179575e235",
   UPTIME_ROBOT_API_KEY: "ur3326395-cb7f8c8246647cc673062b76",
-  GITHUB_USER: "",
-  GITHUB_EMAIL: "",
+  GITHUB_USER: "SANTZSPAXX",
+  GITHUB_EMAIL: "lsd.contanova@gmail.com",
   GITHUB_TOKEN: "",
   DB_PATH: "data/spreadsheet.json",
   KFLOW_CACHE_FILE: "data/kflow_cache.json",
