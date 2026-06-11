@@ -1,0 +1,11 @@
+{
+  "GEMINI_API_KEY": "",
+  "GNEWS_API_KEY": "4cbb11c0a29a782f763aa3179575e235",
+  "UPTIME_ROBOT_API_KEY": "ur3326395-cb7f8c8246647cc673062b76",
+  "GITHUB_USER": "",
+  "GITHUB_EMAIL": "",
+  "GITHUB_TOKEN": "",
+  "DB_PATH": "data/spreadsheet.json",
+  "KFLOW_CACHE_FILE": "data/kflow_cache.json",
+  "CHAT_CACHE_FILE": "data/chat_cache.json"
+}
