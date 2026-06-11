@@ -1,0 +1,528 @@
+import React, { useState } from "react";
+import { SpreadsheetData, TabKey } from "../types";
+import { Save, Plus, Trash2, Download, Send, CheckCircle2, AlertCircle, Github } from "lucide-react";
+import { motion, AnimatePresence } from "motion/react";
+
+interface AdminSpreadsheetProps {
+  data: SpreadsheetData;
+  onUpdateData: (newData: SpreadsheetData) => void;
+  onRefresh: () => void;
+  adminEmail: string;
+}
+
+export default function AdminSpreadsheet({ data, onUpdateData, onRefresh, adminEmail }: AdminSpreadsheetProps) {
+  const [activeTab, setActiveTab] = useState<TabKey>("produtos");
+  const [editingCell, setEditingCell] = useState<{ rowIndex: number; field: string } | null>(null);
+  const [saveStatus, setSaveStatus] = useState<{ type: "success" | "error"; message: string } | null>(null);
+  
+  // Custom Notification Form state
+  const [pushTitle, setPushTitle] = useState("");
+  const [pushBody, setPushBody] = useState("");
+  const [pushStatus, setPushStatus] = useState<string | null>(null);
+
+  // GitHub Auto-Deploy State
+  const [deployStatus, setDeployStatus] = useState<{ loading: boolean; message: string | null; error: boolean } | null>(null);
+
+  const handlePushToGithub = async () => {
+    setDeployStatus({ loading: true, message: "Iniciando build de otimização e empacotamento com o token de SSO...", error: false });
+    try {
+      const response = await fetch("/api/admin/deploy", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: adminEmail }),
+      });
+      const res = await response.json();
+      if (res.success) {
+        setDeployStatus({
+          loading: false,
+          message: "🎉 SUCESSO! Código empacotado e enviado via SSL para 'github.com/SANTZSPAXX/KN.git'!",
+          error: false,
+        });
+      } else {
+        setDeployStatus({
+          loading: false,
+          message: `Falha técnica no Deploy: ${res.error || res.details || "Verifique chaves ou diretório local"}`,
+          error: true,
+        });
+      }
+    } catch (err: any) {
+      setDeployStatus({
+        loading: false,
+        message: `Falha de rede com o servidor KoreNexus: ${err.message}`,
+        error: true,
+      });
+    }
+  };
+
+  // Define column metadata for spreadsheet rendering
+  const tabColumns: Record<TabKey, { key: string; label: string; placeholder: string }[]> = {
+    produtos: [
+      { key: "id", label: "ID (Código)", placeholder: "pX" },
+      { key: "nome", label: "Nome do Produto", placeholder: "Novo ERP" },
+      { key: "descricao", label: "Descrição Detalhada", placeholder: "Sistema customizado para..." },
+      { key: "categoria", label: "Categoria", placeholder: "ERP / CRM / Automação" },
+      { key: "preco", label: "Preço Comercial", placeholder: "Sob Consulta" },
+      { key: "status", label: "Status", placeholder: "Ativo / Beta / Novo" }
+    ],
+    ferramentas: [
+      { key: "id", label: "ID", placeholder: "fX" },
+      { key: "nome", label: "Nome da Ferramenta", placeholder: "Validador" },
+      { key: "tipo", label: "Tipo / Tag", placeholder: "API / Financeiro / DevOps" },
+      { key: "utilidade", label: "Utilidade Principal", placeholder: "Calculadora automática de..." },
+      { key: "link", label: "URL de Acesso", placeholder: "#" },
+      { key: "status", label: "Status", placeholder: "Estável / Beta" }
+    ],
+    apps: [
+      { key: "id", label: "ID", placeholder: "aX" },
+      { key: "nome", label: "Nome do App", placeholder: "KoreForça" },
+      { key: "plataforma", label: "Plataforma", placeholder: "Android / iOS" },
+      { key: "descricao", label: "Descrição", placeholder: "App portátil para..." },
+      { key: "downloads", label: "Downloads", placeholder: "10k+" },
+      { key: "detalhes", label: "Detalhes Técnicos", placeholder: "Sincronização offline automática" },
+      { key: "link", label: "Link de Download", placeholder: "https://..." }
+    ],
+    promocoes: [
+      { key: "id", label: "ID", placeholder: "prX" },
+      { key: "titulo", label: "Nome da Promoção", placeholder: "UI Figma Grátis" },
+      { key: "desconto", label: "Benefício / Desconto", placeholder: "100% OFF / 15% OFF" },
+      { key: "validade", label: "Data de Validade", placeholder: "31-12-2026" },
+      { key: "cupom", label: "Cupom de Ativação", placeholder: "KOREANEXUS" },
+      { key: "condicao", label: "Condições Comerciais", placeholder: "Na contratação de..." }
+    ],
+    blog: [
+      { key: "id", label: "ID", placeholder: "bX" },
+      { key: "titulo", label: "Título do Artigo", placeholder: "Como automatizar..." },
+      { key: "resumo", label: "Resumo Curto", placeholder: "Neste artigo abordamos..." },
+      { key: "categoria", label: "Categoria", placeholder: "Sistemas / UX / Mercado" },
+      { key: "data", label: "Data Publicação", placeholder: "08/06/2026" },
+      { key: "autor", label: "Autor", placeholder: "Fabio Kore" },
+      { key: "leitura", label: "Tempo de Leitura", placeholder: "5 min" }
+    ],
+    notificacoes: [
+      { key: "id", label: "ID", placeholder: "nX" },
+      { key: "titulo", label: "Título do Push", placeholder: "Aviso importante..." },
+      { key: "corpo", label: "Corpo do Alerta", placeholder: "Texto complementar que dispara..." },
+      { key: "data", label: "Data e Hora", placeholder: "08/06/2026 às 18:00" },
+      { key: "enviadoPor", label: "Remetente Admin", placeholder: "admin@korenexus.com" }
+    ]
+  };
+
+  const activeRows = data[activeTab] || [];
+  const activeCols = tabColumns[activeTab] || [];
+
+  // Cell interaction: cell values changes
+  const handleCellChange = (rowIndex: number, field: string, value: string) => {
+    const updatedRows = [...activeRows];
+    updatedRows[rowIndex] = {
+      ...updatedRows[rowIndex],
+      [field]: value
+    };
+
+    const updatedData = {
+      ...data,
+      [activeTab]: updatedRows
+    };
+
+    onUpdateData(updatedData);
+  };
+
+  // Add new blank row at the end mimicking Excel insert
+  const handleAddRow = () => {
+    const newIdCode = activeTab.substring(0, 2) + (activeRows.length + 1);
+    const newRow: Record<string, string> = { id: newIdCode };
+    
+    activeCols.forEach(col => {
+      if (col.key !== "id") {
+        newRow[col.key] = "";
+      }
+    });
+
+    const updatedRows = [...activeRows, newRow];
+    const updatedData = {
+      ...data,
+      [activeTab]: updatedRows
+    };
+
+    onUpdateData(updatedData);
+    setEditingCell({ rowIndex: updatedRows.length - 1, field: activeCols[1]?.key || "nome" });
+  };
+
+  // Delete row
+  const handleDeleteRow = (rowIndex: number) => {
+    const updatedRows = activeRows.filter((_, idx) => idx !== rowIndex);
+    const updatedData = {
+      ...data,
+      [activeTab]: updatedRows
+    };
+    onUpdateData(updatedData);
+  };
+
+  // Save specific tab to database express endpoint
+  const handleSaveSpreadsheet = async () => {
+    setSaveStatus(null);
+    try {
+      const response = await fetch("/api/spreadsheet-update", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          tabName: activeTab,
+          rows: activeRows
+        })
+      });
+
+      const result = await response.json();
+      if (result.success) {
+        setSaveStatus({ type: "success", message: `Tabela '${activeTab.toUpperCase()}' salva e sincronizada em tempo real!` });
+        onRefresh();
+        setTimeout(() => setSaveStatus(null), 4000);
+      } else {
+        setSaveStatus({ type: "error", message: result.error || "Erro ao salvar alterações corporativas." });
+      }
+    } catch (err: any) {
+      setSaveStatus({ type: "error", message: "Erro de conexão: " + err.message });
+    }
+  };
+
+  // Export spreadsheet tab to CSV format
+  const handleExportCSV = () => {
+    if (activeRows.length === 0) return;
+    
+    const headers = activeCols.map(col => col.label).join(";");
+    const rows = activeRows.map(row => 
+      activeCols.map(col => {
+        const val = (row as any)[col.key] || "";
+        // Sanitize string to avoid broken csv formatting
+        return `"${val.toString().replace(/"/g, '""')}"`;
+      }).join(";")
+    );
+    
+    const csvContent = "data:text/csv;charset=utf-8,\uFEFF" + [headers, ...rows].join("\n");
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", `korenexus_planilha_${activeTab}_2026.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  // Dispatch Push Notification to all active client users
+  const handleDispatchPush = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!pushTitle || !pushBody) return;
+    
+    setPushStatus("Aguardando...");
+    try {
+      const response = await fetch("/api/notifications/publish", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          titulo: pushTitle,
+          corpo: pushBody,
+          enviadoPor: adminEmail
+        })
+      });
+
+      const result = await response.json();
+      if (result.success) {
+        setPushStatus("Sucesso! Notificação disparada para todos os usuários em tempo real.");
+        setPushTitle("");
+        setPushBody("");
+        onRefresh(); // Refresh spreadsheet sheets
+        setTimeout(() => setPushStatus(null), 5000);
+      } else {
+        setPushStatus("Falha ao disparar. " + result.error);
+      }
+    } catch (err: any) {
+      setPushStatus("Erro de rede: " + err.message);
+    }
+  };
+
+  return (
+    <div className="w-full bg-[#111622] border border-gray-800 rounded-3xl p-6 overflow-hidden">
+      {/* Title */}
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-gray-800 pb-5 mb-6">
+        <div>
+          <h2 className="text-xl font-display font-bold text-white flex items-center gap-2">
+            <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            Planilha de Negócios KoreNexus - Banco de Dados em Tempo Real
+          </h2>
+          <p className="text-xs text-slate-400 mt-1">
+            Modo Corporativo Admin • Conectado como <span className="text-blue-400 font-bold font-mono">{adminEmail}</span>
+          </p>
+        </div>
+
+        {/* Action Controls for Active Spreadsheet */}
+        <div className="flex flex-wrap items-center gap-2">
+          <button
+            onClick={handleExportCSV}
+            className="flex items-center gap-1.5 px-3 py-1.5 sm:px-4 sm:py-2 text-xs bg-[#0A0D14] hover:bg-gray-800 text-slate-200 hover:text-white rounded-full border border-gray-800 transition cursor-pointer"
+            title="Baixar Tabela Ativa formato Comercial .CSV"
+            id="btn-export-csv"
+          >
+            <Download className="h-3.5 w-3.5" />
+            <span className="hidden sm:inline">Exportar Planilha (CSV)</span>
+            <span className="sm:hidden">CSV</span>
+          </button>
+          
+          <button
+            onClick={handleSaveSpreadsheet}
+            className="flex items-center gap-1.5 px-3 py-1.5 sm:px-4 sm:py-2 text-xs bg-blue-600 hover:bg-blue-700 text-white rounded-full font-bold transition shadow-lg shadow-blue-600/20 cursor-pointer"
+            title="Persistir todas alterações no servidor central"
+            id="btn-save-spreadsheet"
+          >
+            <Save className="h-3.5 w-3.5" />
+            <span>Salvar Alterações</span>
+          </button>
+
+          <button
+            onClick={handlePushToGithub}
+            disabled={deployStatus?.loading}
+            className={`flex items-center gap-1.5 px-3 py-1.5 sm:px-4 sm:py-2 text-xs rounded-full font-bold transition shadow-lg cursor-pointer ${
+              deployStatus?.loading
+                ? "bg-slate-800 text-gray-500 cursor-not-allowed border border-gray-700"
+                : "bg-indigo-600 hover:bg-indigo-700 text-white shadow-indigo-600/20"
+            }`}
+            title="Fazer build do Vite e dar Push no repositório GitHub via SSO"
+            id="btn-deploy-github"
+          >
+            <Github className={`h-3.5 w-3.5 ${deployStatus?.loading ? "animate-spin" : ""}`} />
+            <span>{deployStatus?.loading ? "Efetuando Deploy..." : "Deploy Git (SSO)"}</span>
+          </button>
+        </div>
+      </div>
+
+      {/* Tabs Navigation corresponding to spreadsheet tabs */}
+      <div className="flex flex-wrap gap-1 bg-[#0A0D14]/80 p-1.5 rounded-2xl mb-6 border border-gray-800">
+        {(Object.keys(tabColumns) as TabKey[]).map((tabKey) => {
+          const isActive = activeTab === tabKey;
+          return (
+            <button
+              key={tabKey}
+              onClick={() => {
+                setActiveTab(tabKey);
+                setEditingCell(null);
+              }}
+              className={`px-4 py-2 text-xs rounded-xl font-bold transition capitalize cursor-pointer ${
+                isActive
+                  ? "bg-blue-600 text-white shadow-md shadow-blue-600/10"
+                  : "text-gray-400 hover:text-slate-200 hover:bg-white/5"
+              }`}
+              id={`tab-${tabKey}`}
+            >
+              📊 {tabKey === "promocoes" ? "Promoções" : tabKey === "notificacoes" ? "Notificações" : tabKey}
+            </button>
+          );
+        })}
+      </div>
+
+      {/* Save Status Alert Banner */}
+      <AnimatePresence>
+        {saveStatus && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            className={`flex items-center gap-2 p-3 rounded-2xl text-xs mb-5 border ${
+              saveStatus.type === "success"
+                ? "bg-emerald-950/40 border-emerald-500/20 text-emerald-400"
+                : "bg-rose-950/40 border-rose-500/20 text-rose-400"
+            }`}
+          >
+            {saveStatus.type === "success" ? <CheckCircle2 className="h-4 w-4 shrink-0" /> : <AlertCircle className="h-4 w-4 shrink-0" />}
+            <span>{saveStatus.message}</span>
+          </motion.div>
+        )}
+
+        {deployStatus && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            className={`flex items-start gap-2.5 p-4 rounded-2xl text-xs mb-5 border leading-relaxed font-mono ${
+              deployStatus.loading
+                ? "bg-slate-950/80 border-indigo-500/20 text-indigo-400"
+                : deployStatus.error
+                ? "bg-rose-950/40 border-rose-500/20 text-rose-400"
+                : "bg-emerald-950/40 border-emerald-500/20 text-emerald-400"
+            }`}
+          >
+            {deployStatus.loading ? (
+              <svg className="animate-spin h-4 w-4 text-indigo-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24">
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+              </svg>
+            ) : deployStatus.error ? (
+              <AlertCircle className="h-4 w-4 shrink-0 text-rose-400 mt-0.5" />
+            ) : (
+              <CheckCircle2 className="h-4 w-4 shrink-0 text-emerald-400 mt-0.5" />
+            )}
+            <div className="flex-1 whitespace-pre-line">
+              {deployStatus.message}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Spreadsheet Interactive Grid */}
+      <div className="relative border border-gray-800 rounded-2xl overflow-hidden bg-[#0A0D14]">
+        <div className="overflow-x-auto w-full max-h-[400px]">
+          <table className="w-full text-left border-collapse table-auto text-xs font-mono">
+            <thead>
+              <tr className="bg-[#111622] border-b border-gray-800 text-slate-300">
+                <th className="p-3 w-12 text-center border-r border-gray-800 select-none text-gray-500">#</th>
+                {activeCols.map((col) => (
+                  <th key={col.key} className="p-3 border-r border-gray-800 min-w-[150px] font-semibold uppercase tracking-wider text-gray-400">
+                    {col.label}
+                  </th>
+                ))}
+                <th className="p-3 text-center w-16">Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              {activeRows.length === 0 ? (
+                <tr>
+                  <td colSpan={activeCols.length + 2} className="p-8 text-center text-gray-500 italic">
+                    Aba vazia. Clique em "Adicionar Linha" para iniciar o preenchimento.
+                  </td>
+                </tr>
+              ) : (
+                activeRows.map((row: any, rowIndex) => (
+                  <tr key={row.id || rowIndex} className="border-b border-gray-850 hover:bg-gray-800/10 text-slate-200 group">
+                    <td className="p-3 text-center bg-[#111622]/40 border-r border-gray-800 text-gray-500 select-none">
+                      {rowIndex + 1}
+                    </td>
+                    
+                    {activeCols.map((col) => {
+                      const isEditing = editingCell?.rowIndex === rowIndex && editingCell?.field === col.key;
+                      const cellValue = row[col.key] !== undefined ? row[col.key] : "";
+                      const isId = col.key === "id";
+
+                      return (
+                        <td
+                          key={col.key}
+                          className={`p-1 border-r border-gray-800 ${isId ? "bg-slate-900/20 text-blue-400 font-bold" : "cursor-pointer"}`}
+                          onClick={() => {
+                            if (!isId) {
+                               setEditingCell({ rowIndex, field: col.key });
+                            }
+                          }}
+                        >
+                          {isEditing ? (
+                            <input
+                              type="text"
+                              value={cellValue}
+                              onChange={(e) => handleCellChange(rowIndex, col.key, e.target.value)}
+                              onBlur={() => setEditingCell(null)}
+                              placeholder={col.placeholder}
+                              autoFocus
+                              className="w-full h-full p-2 bg-[#0A0D14] text-white border border-blue-500/40 outline-none focus:ring-1 focus:ring-blue-500 rounded-lg"
+                              onKeyDown={(e) => {
+                                  if (e.key === "Enter") {
+                                    setEditingCell(null);
+                                  }
+                              }}
+                            />
+                          ) : (
+                            <div className="p-2 truncate min-h-[32px] flex items-center" title="Clique duas vezes para editar esta célula">
+                              {cellValue !== "" ? (
+                                cellValue
+                              ) : (
+                                <span className="text-gray-650 italic">vazio</span>
+                              )}
+                            </div>
+                          )}
+                        </td>
+                      );
+                    })}
+
+                    <td className="p-2 text-center">
+                      <button
+                        onClick={() => handleDeleteRow(rowIndex)}
+                        className="p-1 px-2 text-rose-500 hover:text-white hover:bg-rose-500/20 rounded transition opacity-50 group-hover:opacity-100 cursor-pointer"
+                        title="Remover linha"
+                        id={`btn-delete-row-${rowIndex}`}
+                      >
+                        <Trash2 className="h-3.5 w-3.5" />
+                      </button>
+                    </td>
+                  </tr>
+                ))
+              )}
+            </tbody>
+          </table>
+        </div>
+
+        {/* Bottom add bar matching Excel style */}
+        <div className="bg-[#111622] p-3 border-t border-gray-800 flex justify-between items-center">
+          <button
+            onClick={handleAddRow}
+            className="flex items-center gap-1.5 px-4 py-1.5 bg-[#0A0D14] hover:bg-gray-800 border border-gray-800 rounded-full text-slate-300 hover:text-white transition cursor-pointer text-xs font-semibold"
+            id="btn-add-row"
+          >
+            <Plus className="h-3.5 w-3.5 text-blue-400" />
+            <span>Inserir Linha (Excel)</span>
+          </button>
+          
+          <span className="text-gray-500 text-[10px]">
+            {activeRows.length} linhas carregadas nesta aba corporativa
+          </span>
+        </div>
+      </div>
+
+      {/* Push Notification Panel Launcher */}
+      <div className="mt-8 border-t border-gray-800 pt-6">
+        <h3 className="text-md font-display font-bold text-white mb-3 flex items-center gap-2">
+          <Send className="h-4 w-4 text-blue-400" />
+          Disparador Real-Time de Notificações Push
+        </h3>
+        <p className="text-xs text-gray-400 mb-5">
+          Envie novidades ou alertas gerais. Este componente se comunica via Server-Sent Events (SSE). Todos os usuários navegando na KoreNexus no momento verão a notificação descer da tela imediatamente de forma fluida.
+        </p>
+
+        <form onSubmit={handleDispatchPush} className="grid grid-cols-1 md:grid-cols-12 gap-4 bg-[#0A0D14]/40 p-5 rounded-2xl border border-gray-800">
+          <div className="md:col-span-4 flex flex-col gap-1.5">
+            <label className="text-xs text-slate-300 font-medium">Título do Comunicado</label>
+            <input
+              type="text"
+              required
+              placeholder="Ex: 🛠️ Lançamento de Nova API"
+              value={pushTitle}
+              onChange={(e) => setPushTitle(e.target.value)}
+              className="bg-[#0A0D14] text-white rounded-full border border-gray-800 px-4 py-2 text-xs focus:ring-1 focus:ring-blue-500 outline-none w-full"
+            />
+          </div>
+
+          <div className="md:col-span-6 flex flex-col gap-1.5">
+            <label className="text-xs text-slate-300 font-medium">Corpo / Mensagem Curta</label>
+            <input
+              type="text"
+              required
+              placeholder="Ex: Liberamos a documentação pública da nossa API de cálculo de margem logística, acesse o painel de APIs..."
+              value={pushBody}
+              onChange={(e) => setPushBody(e.target.value)}
+              className="bg-[#0A0D14] text-white rounded-full border border-gray-800 px-4 py-2 text-xs focus:ring-1 focus:ring-blue-500 outline-none w-full"
+            />
+          </div>
+
+          <div className="md:col-span-2 flex items-end">
+            <button
+              type="submit"
+              className="w-full py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-full transition shadow-lg shadow-blue-600/15 cursor-pointer"
+              id="btn-dispatch-push"
+            >
+              Disparar Push 🚀
+            </button>
+          </div>
+        </form>
+
+        {pushStatus && (
+          <div className="mt-3 text-xs font-mono text-blue-405 flex items-center gap-2">
+            <span className="h-1.5 w-1.5 rounded-full bg-blue-500 animate-ping"></span>
+            <span>{pushStatus}</span>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
