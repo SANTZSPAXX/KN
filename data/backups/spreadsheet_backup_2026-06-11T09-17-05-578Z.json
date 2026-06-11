@@ -1,0 +1,223 @@
+{
+  "produtos": [
+    {
+      "id": "p1",
+      "nome": "KoreERP",
+      "descricao": "ERP completo sob medida para indústrias, distribuidoras e redes de varejo.",
+      "categoria": "Sistemas ERP",
+      "preco": "Sob Consulta",
+      "status": "Ativo"
+    },
+    {
+      "id": "p2",
+      "nome": "KoreCRM",
+      "descricao": "Gestão inteligente de funil de vendas integrado com automação de WhatsApp.",
+      "categoria": "Sistemas CRM",
+      "preco": "Sob Consulta",
+      "status": "Ativo"
+    },
+    {
+      "id": "p3",
+      "nome": "KoreFlow",
+      "descricao": "Motor de BPMN e automação de fluxos operacionais internos de empresas.",
+      "categoria": "Automação",
+      "preco": "Sob Consulta",
+      "status": "Novo"
+    },
+    {
+      "id": "p4",
+      "nome": "KoreAnalytics",
+      "descricao": "Painéis de business intelligence em tempo real para tomada de decisões.",
+      "categoria": "Dados & BI",
+      "preco": "Sob Consulta",
+      "status": "Beta"
+    }
+  ],
+  "ferramentas": [
+    {
+      "id": "f1",
+      "nome": "KoreValid",
+      "tipo": "Validador API",
+      "utilidade": "Validador automático de notas fiscais (Sefaz) e CNPJ em lotes.",
+      "link": "#",
+      "status": "Estável"
+    },
+    {
+      "id": "f2",
+      "nome": "KoreCalc",
+      "tipo": "Fintech",
+      "utilidade": "Calculadora de margens financeiras operacionais complexas para e-commerce.",
+      "link": "#",
+      "status": "Estável"
+    },
+    {
+      "id": "f3",
+      "nome": "KoreDeploy",
+      "tipo": "DevOps",
+      "utilidade": "Esteira de automatização de deploy multi-cloud com Kubernetes.",
+      "link": "#",
+      "status": "Beta"
+    },
+    {
+      "id": "f4",
+      "nome": "KoreToken",
+      "tipo": "Segurança",
+      "utilidade": "Gerador de chaves de autenticação de fator duplo (MFA) em microsserviços.",
+      "link": "#",
+      "status": "Estável"
+    }
+  ],
+  "apps": [
+    {
+      "id": "a1",
+      "nome": "KoreCollector",
+      "plataforma": "Android / iOS",
+      "descricao": "Rápido coletor de dados para inventários de estoques inteligentes.",
+      "downloads": "25k+",
+      "detalhes": "Leitor de código de barras portátil offline.",
+      "link": ""
+    },
+    {
+      "id": "a2",
+      "nome": "KoreSales",
+      "plataforma": "Android / iOS",
+      "descricao": "Aplicativo mobile para força de vendas para emitir pedidos em rota de viagem.",
+      "downloads": "15k+",
+      "detalhes": "Sincronização híbrida automática e suporte offline.",
+      "link": ""
+    },
+    {
+      "id": "a3",
+      "nome": "KoreDelivery",
+      "plataforma": "Android / iOS",
+      "descricao": "Rastreamento em tempo real de frotas e confirmação de entrega.",
+      "downloads": "8k+",
+      "detalhes": "Assinatura digital e anexo de fotos no local da entrega.",
+      "link": ""
+    }
+  ],
+  "promocoes": [
+    {
+      "id": "pr1",
+      "titulo": "Design de UI Grátis",
+      "desconto": "100% OFF",
+      "validade": "15-08-2026",
+      "cupom": "KOREDESIGN",
+      "condicao": "Na contratação de qualquer sistema sob medida completo."
+    },
+    {
+      "id": "pr2",
+      "titulo": "Setup de Legado Desconto",
+      "desconto": "15% de Desconto",
+      "validade": "30-10-2026",
+      "cupom": "MIGRAKORE",
+      "condicao": "Para migração e reengenharia de sistemas legados antigos."
+    },
+    {
+      "id": "pr3",
+      "titulo": "Consultoria Gratuita",
+      "desconto": "Grátis",
+      "validade": "Sempre Ativo",
+      "cupom": "QUEROKORE",
+      "condicao": "Reunião de 1 hora de arquitetura de software de sistemas."
+    }
+  ],
+  "blog": [
+    {
+      "id": "b_rpa_1781169425575_88",
+      "titulo": "Jensen Huang: O Visionário por trás da Nvidia e o Futuro da Inteligência Artificial",
+      "resumo": "Jensen Huang, CEO da Nvidia, lidera a revolução da IA com eficiência e inovação. Seu enfoque em arquitetura técnica de software e integrações personalizadas impulsiona o crescimento empresarial. Aprenda como sua abordagem pode inspirar sua estratégia de negócios.",
+      "categoria": "Tecnologia e Inovação",
+      "data": "11/06/2026 às 06:17",
+      "autor": "Yugny Ohany Miotelo",
+      "leitura": "5 min",
+      "conteudo": "## Introdução\nA Inteligência Artificial (IA) está transformando indústrias e revolucionando a forma como as empresas operam. No centro dessa revolução está Jensen Huang, CEO da Nvidia, conhecido por seu casaco de cabedal e sua paixão pela tecnologia. Com um patrimônio de 150 mil milhões, Huang é um exemplo de como a inovação e a eficiência podem levar ao sucesso.\n## Arquitetura Técnica de Software\nA Nvidia, sob a liderança de Huang, desenvolveu uma arquitetura técnica de software que permite a integração perfeita de hardware e software. Isso permite que as empresas criem soluções personalizadas para atender às suas necessidades específicas. A empresa também investe pesadamente em pesquisas e desenvolvimento, garantindo que suas soluções sejam sempre à frente da curva.\n## Integrações e Dados Sob Medida\nA Nvidia oferece uma variedade de soluções de integração que permitem que as empresas conectem seus sistemas e aplicativos de forma eficiente. Além disso, a empresa fornece ferramentas de análise de dados que permitem que as empresas tomem decisões informadas com base em dados precisos. Isso é especialmente importante em um mundo onde a IA e a aprendizagem de máquina estão se tornando cada vez mais importantes.\n## Lições Práticas\nHuang é um exemplo de como a paixão pela tecnologia e a inovação pode levar ao sucesso. Aqui estão algumas lições práticas que as empresas podem aprender com sua abordagem:\n* Invista em pesquisas e desenvolvimento para garantir que suas soluções sejam sempre à frente da curva.\n* Desenvolva uma arquitetura técnica de software que permita a integração perfeita de hardware e software.\n* Forneça ferramentas de análise de dados que permitam que as empresas tomem decisões informadas com base em dados precisos.\n## Conclusão\nJensen Huang é um visionário que está liderando a revolução da IA com eficiência e inovação. Sua abordagem à arquitetura técnica de software, integrações e dados sob medida é um exemplo de como as empresas podem criar soluções personalizadas para atender às suas necessidades específicas. Aprenda com sua abordagem e inspire sua estratégia de negócios para alcançar o sucesso."
+    },
+    {
+      "id": "b_rpa_1781169414193_56",
+      "titulo": "Jensen Huang: O Visionário por trás da Nvidia e o Futuro da Inteligência Artificial",
+      "resumo": "Jensen Huang, CEO da Nvidia, lidera a revolução da IA com eficiência e inovação. Seu enfoque em arquitetura técnica de software e integrações personalizadas impulsiona o crescimento empresarial. Aprenda como sua abordagem pode inspirar sua estratégia de negócios.",
+      "categoria": "Tecnologia e Inovação",
+      "data": "11/06/2026 às 06:16",
+      "autor": "Yugny Ohany Miotelo",
+      "leitura": "5 min",
+      "conteudo": "## Introdução\nA Inteligência Artificial (IA) está transformando indústrias e revolucionando a forma como as empresas operam. No centro dessa revolução está Jensen Huang, CEO da Nvidia, conhecido por seu casaco de cabedal e sua paixão pela tecnologia. Com um patrimônio de 150 mil milhões, Huang é um exemplo de como a inovação e a eficiência podem levar ao sucesso.\n## Arquitetura Técnica de Software\nA Nvidia, sob a liderança de Huang, desenvolveu uma arquitetura técnica de software que permite a integração perfeita de hardware e software. Isso permite que as empresas criem soluções personalizadas para atender às suas necessidades específicas. A empresa também investe pesadamente em pesquisas e desenvolvimento, garantindo que suas soluções sejam sempre à frente da curva.\n## Integrações e Dados Sob Medida\nA Nvidia oferece uma variedade de soluções de integração que permitem que as empresas conectem seus sistemas e aplicativos de forma eficiente. Além disso, a empresa fornece ferramentas de análise de dados que permitem que as empresas tomem decisões informadas com base em dados precisos. Isso é especialmente importante em um mundo onde a IA e a aprendizagem de máquina estão se tornando cada vez mais importantes.\n## Lições Práticas\nHuang é um exemplo de como a paixão pela tecnologia e a inovação pode levar ao sucesso. Aqui estão algumas lições práticas que as empresas podem aprender com sua abordagem:\n* Invista em pesquisas e desenvolvimento para garantir que suas soluções sejam sempre à frente da curva.\n* Desenvolva uma arquitetura técnica de software que permita a integração perfeita de hardware e software.\n* Forneça ferramentas de análise de dados que permitam que as empresas tomem decisões informadas com base em dados precisos.\n## Conclusão\nJensen Huang é um visionário que está liderando a revolução da IA com eficiência e inovação. Sua abordagem à arquitetura técnica de software, integrações e dados sob medida é um exemplo de como as empresas podem criar soluções personalizadas para atender às suas necessidades específicas. Aprenda com sua abordagem e inspire sua estratégia de negócios para alcançar o sucesso."
+    },
+    {
+      "id": "b_rpa_1781169200535_20",
+      "titulo": "Revolutionizando o Mercado de Consoles: Eficiência e Inovação",
+      "resumo": "A Xbox afirma que consoles estão caros demais, prevendo mudanças radicais nos próximos meses. Isso pode significar novas formas de acesso e modelos de negócios inovadores. A Asha Sharma sugere que o aumento dos custos desafia o modelo tradicional de hardware.",
+      "categoria": "Sistemas",
+      "data": "11/06/2026 às 06:13",
+      "autor": "Yugny Ohany Miotelo",
+      "leitura": "5 min",
+      "conteudo": "# Introdução\nA indústria de consoles de videogames está passando por uma transformação significativa. Com o aumento dos custos de produção e a crescente demanda por experiências de jogo mais imersivas, as empresas precisam repensar suas estratégias de negócios e arquiteturas técnicas.\n## O Desafio do Custo\nA Asha Sharma, da Xbox, afirma que os consoles estão se tornando caros demais para os consumidores. Isso é um desafio significativo para as empresas, pois elas precisam equilibrar a necessidade de oferecer produtos de alta qualidade com a necessidade de manter os preços acessíveis.\n### Microsserviços e Arquitetura de Software\nUma abordagem possível para resolver esse desafio é a adoção de microsserviços e arquiteturas de software mais flexíveis. Isso permitiria que as empresas desenvolvessem e implantassem novas funcionalidades e serviços de forma mais rápida e eficiente, reduzindo os custos e melhorando a experiência do usuário.\n## Novas Formas de Acesso\nA Asha Sharma também sugere que podemos ver novas formas de acesso aos consoles nos próximos meses. Isso pode incluir modelos de assinatura, serviços de streaming e outras opções que permitam aos consumidores acessar jogos e experiências de forma mais flexível e acessível.\n### Modelagem de Fluxos e Lições Práticas\nPara implementar essas mudanças, as empresas precisam desenvolver modelos de fluxos de dados e processos que sejam eficientes e escaláveis. Isso pode incluir a adoção de tecnologias como o Kubernetes, o Docker e a nuvem, que permitem que as empresas implantem e gerenciem aplicativos e serviços de forma mais eficiente.\n# Conclusão\nA indústria de consoles de videogames está passando por uma transformação significativa, impulsionada pelo aumento dos custos e a demanda por experiências de jogo mais imersivas. Com a adoção de microsserviços, arquiteturas de software flexíveis e novas formas de acesso, as empresas podem criar modelos de negócios mais eficientes e inovadores, melhorando a experiência do usuário e reduzindo os custos."
+    },
+    {
+      "id": "b_rpa_1781169195160_90",
+      "titulo": "Jensen Huang: O Visionário por trás da Nvidia e o Futuro da Inteligência Artificial",
+      "resumo": "Jensen Huang, CEO da Nvidia, lidera a revolução da IA com eficiência e inovação. Seu enfoque em arquitetura técnica de software e integrações personalizadas impulsiona o crescimento empresarial. Aprenda como sua abordagem pode inspirar sua estratégia de negócios.",
+      "categoria": "Tecnologia e Inovação",
+      "data": "11/06/2026 às 06:13",
+      "autor": "Yugny Ohany Miotelo",
+      "leitura": "5 min",
+      "conteudo": "## Introdução\nA Inteligência Artificial (IA) está transformando indústrias e revolucionando a forma como as empresas operam. No centro dessa revolução está Jensen Huang, CEO da Nvidia, conhecido por seu casaco de cabedal e sua paixão pela tecnologia. Com um patrimônio de 150 mil milhões, Huang é um exemplo de como a inovação e a eficiência podem levar ao sucesso.\n## Arquitetura Técnica de Software\nA Nvidia, sob a liderança de Huang, desenvolveu uma arquitetura técnica de software que permite a integração perfeita de hardware e software. Isso permite que as empresas criem soluções personalizadas para atender às suas necessidades específicas. A empresa também investe pesadamente em pesquisas e desenvolvimento, garantindo que suas soluções sejam sempre à frente da curva.\n## Integrações e Dados Sob Medida\nA Nvidia oferece uma variedade de soluções de integração que permitem que as empresas conectem seus sistemas e aplicativos de forma eficiente. Além disso, a empresa fornece ferramentas de análise de dados que permitem que as empresas tomem decisões informadas com base em dados precisos. Isso é especialmente importante em um mundo onde a IA e a aprendizagem de máquina estão se tornando cada vez mais importantes.\n## Lições Práticas\nHuang é um exemplo de como a paixão pela tecnologia e a inovação pode levar ao sucesso. Aqui estão algumas lições práticas que as empresas podem aprender com sua abordagem:\n* Invista em pesquisas e desenvolvimento para garantir que suas soluções sejam sempre à frente da curva.\n* Desenvolva uma arquitetura técnica de software que permita a integração perfeita de hardware e software.\n* Forneça ferramentas de análise de dados que permitam que as empresas tomem decisões informadas com base em dados precisos.\n## Conclusão\nJensen Huang é um visionário que está liderando a revolução da IA com eficiência e inovação. Sua abordagem à arquitetura técnica de software, integrações e dados sob medida é um exemplo de como as empresas podem criar soluções personalizadas para atender às suas necessidades específicas. Aprenda com sua abordagem e inspire sua estratégia de negócios para alcançar o sucesso."
+    },
+    {
+      "id": "b_rpa_1780998220753_88",
+      "titulo": "A Revolução Conversacional de R$ 300 Milhões: Como a Movida e a Meta Redefiniram a Arquitetura de Aluguel de Carros via IA no WhatsApp",
+      "resumo": "Descubra como a Movida projeta faturar R$ 300 milhões integrando Agentes de IA Generativa à API Cloud da Meta, conectando microsserviços complexos a fluxos transacionais de alta performance.",
+      "categoria": "Sistemas",
+      "data": "09/06/2026 às 09:43",
+      "autor": "Yugny Ohany Miotelo",
+      "leitura": "5 min",
+      "conteudo": "# A Revolução Conversacional de R$ 300 Milhões: Como a Movida e a Meta Redefiniram a Arquitetura de Aluguel de Carros via IA no WhatsApp\n\nA convergência entre Inteligência Artificial Generativa e canais de mensageria instantânea acaba de atingir um novo patamar de maturidade corporativa. Em uma parceria inédita globalmente com a Meta, a **Movida** anunciou o desenvolvimento de um agente de IA pioneiro rodando diretamente no WhatsApp, projetando transacionar **R$ 300 milhões em aluguéis** por meio deste novo canal.\n\nPara líderes de tecnologia e arquitetos de software, este case vai muito além de um simples chatbot de atendimento. Trata-se de uma implementação complexa de **Conversational Commerce transacional**, que exige orquestração de estado em tempo real, integração síncrona com sistemas legados (ERP) e processamento de linguagem natural (NLP) com foco em conversão de negócios.\n\nNeste artigo, analisamos a fundo os pilares arquiteturais, os desafios de integração de microsserviços e as lições de engenharia por trás dessa inovação pioneira.\n\n---\n\n## 1. O Desafio Arquitetural: Do Conversacional ao Transacional\n\nConstruir um agente conversacional capaz de consultar frotas, calcular tarifas dinâmicas, validar perfis de crédito e efetivar reservas exige uma arquitetura robusta. Ao contrário de fluxos informativos, o fluxo transacional não pode tolerar inconsistências de estado.\n\n### Os Três Pilares da Solução:\n1. **Orquestração de Estado Assíncrono (State Machine):** O WhatsApp é um canal inerentemente assíncrono. O usuário pode iniciar uma reserva, pausar por duas horas e retomar. O sistema deve persistir o contexto da conversa sem onerar a memória dos microsserviços de aplicação.\n2. **Abstração de LLM (Large Language Models):** Para garantir respostas rápidas e acionáveis, a arquitetura utiliza um middleware de IA que traduz as intenções do usuário em chamadas de API estruturadas (JSON), evitando alucinações de dados críticos (como preços e datas).\n3. **Integração de Baixa Latência com o Core Business:** Conectar a API da Meta aos sistemas de gerenciamento de frota e tarifação da Movida com tempo de resposta inferior a 2 segundos.\n\n---\n\n## 2. Visão Geral da Arquitetura de Microsserviços\n\nPara viabilizar essa operação em escala, a arquitetura de software foi desenhada sob o paradigma de microsserviços orientados a eventos. Abaixo, detalhamos os principais componentes desse ecossistema:\n\n```\n[ WhatsApp Client ] \n       │ (HTTPS/Webhooks)\n       ▼\n[ Meta Cloud API ]\n       │\n       ▼\n[ API Gateway & Security Layer ] (Rate Limiting, WAF, Auth)\n       │\n       ▼\n[ Conversational Orchestrator Service ] ── (Redis Cache: Session State)\n       │\n       ├─► [ LLM Gateway & NLP Router ] (Intent Classification & Guardrails)\n       │\n       ├─► [ Fleet & Pricing Microservice ] (Real-time Availability & ERP)\n       │\n       └─► [ Customer & Billing Microservice ] (Tokenization & Payment)\n```\n\n### Detalhamento dos Componentes:\n\n* **Conversational Orchestrator (Orquestrador de Fluxo):** O cérebro da operação. Ele recebe o webhook da Meta, recupera o estado da sessão no **Redis** e determina se a mensagem deve ser tratada pelo motor de IA ou se deve acionar diretamente um serviço de negócio (ex: confirmação de pagamento).\n* **LLM Gateway & Guardrails:** Camada responsável por sanitizar as entradas do usuário, classificar a intenção (ex: \"Quero alugar um SUV em Congonhas amanhã\") e mapear as variáveis necessárias para a chamada da API de reserva. Os *guardrails* garantem que o modelo não responda a perguntas fora do escopo de aluguel de carros.\n* **Fleet & Pricing Service:** Microsserviço conectado diretamente ao ERP da Movida. Ele realiza o cálculo de tarifas dinâmicas com base na demanda, localização e perfil do cliente em tempo real.\n\n---\n\n## 3. Modelagem do Fluxo de Dados: Da Intenção à Reserva\n\nO diagrama de sequência abaixo ilustra o fluxo de dados ponta a ponta quando um cliente solicita uma reserva via linguagem natural:\n\n1. **Input do Usuário:** \"Preciso de um carro econômico no Aeroporto de Guarulhos para o próximo fim de semana.\"\n2. **Mapeamento de Intenção:** O *LLM Gateway* extrai as entidades:\n   * `categoria_veiculo`: \"Econômico\"\n   * `local_retirada`: \"Aeroporto de Guarulhos (GRU)\"\n   * `data_inicio`: Próxima sexta-feira\n   * `data_fim`: Próximo domingo\n3. **Validação de Regras de Negócio:** O Orquestrador envia um payload JSON estruturado para o *Fleet Service* para verificar a disponibilidade real da frota.\n4. **Cálculo de Tarifa:** O sistema retorna as opções de preços disponíveis.\n5. **Apresentação Dinâmica:** O Orquestrador formata a resposta utilizando os componentes interativos do WhatsApp (botões, listas e cards), otimizando a UX e reduzindo a fricção do teclado de texto.\n\n---\n\n## 4. Engenharia de Dados, Segurança e LGPD\n\nTratar dados pessoais e financeiros em um canal de terceiros como o WhatsApp exige rigor extremo de conformidade:\n\n* **Zero Trust & Tokenização:** Dados sensíveis de pagamento (como cartões de crédito) não trafegam em texto claro e não são armazenados pelo modelo de IA. A integração utiliza gateways de pagamento homologados PCI-DSS, gerando tokens temporários de transação.\n* **Mascaramento de PII (Personally Identifiable Information):** Antes de enviar qualquer dado de conversa para os modelos de linguagem para refinamento de contexto, as informações pessoais (CPF, nomes, telefones) são anonimizadas na camada de *Gateway de IA*.\n* **Consentimento Ativo (Opt-in):** O fluxo conversacional exige aceitação explícita dos termos de uso e políticas de privacidade da LGPD logo na primeira interação transacional.\n\n---\n\n## 5. Lições Práticas para a Engenharia de Software Corporativa\n\nO pioneirismo da Movida e da Meta traz aprendizados valiosos para qualquer organização que busca implementar IA Generativa em ambientes de missão crítica:\n\n1. **Não confie apenas na IA para lógica de negócios:** A IA deve ser usada para interface e extração de intenções (NLU). As regras de negócio, preços e transações devem permanecer sob o controle estrito de microsserviços determinísticos tradicionais.\n2. **Invista em Caching de Estado:** O WhatsApp é assíncrono e de alto volume. Sem uma estratégia eficiente de cache de sessão (como Redis Enterprise), o custo de infraestrutura e a latência das consultas ao banco de dados inviabilizariam a operação.\n3. **Componentização Conversacional:** Reduza o processamento de texto livre sempre que possível. Utilize botões nativos da API do WhatsApp para guiar o usuário em decisões críticas (como \"Confirmar\" ou \"Cancelar\"), economizando tokens de LLM e acelerando o tempo de resposta.\n\n## Conclusão\n\nA iniciativa da Movida projeta um novo padrão para o varejo e serviços globais. Ao transformar o WhatsApp de um canal de suporte em um canal de receita de alta performance com IA, a companhia demonstra que a maturidade tecnológica reside na integração inteligente entre novas tecnologias cognitivas e arquiteturas de software robustas, escaláveis e seguras."
+    },
+    {
+      "id": "b_rpa_1780998201638_24",
+      "titulo": "O IPO de US$ 1 Trilhão da OpenAI: Implicações Arquiteturais e o Futuro da IA Híbrida nas Empresas",
+      "resumo": "A iminente abertura de capital da OpenAI redefine o mercado de tecnologia. Analisamos como essa capitalização acelerará a infraestrutura de IA híbrida, microsserviços cognitivos e o imperativo da soberania de dados para grandes corporações.",
+      "categoria": "Sistemas",
+      "data": "09/06/2026 às 09:43",
+      "autor": "Yugny Ohany Miotelo",
+      "leitura": "5 min",
+      "conteudo": "### A Corrida do Trilhão: Mais que Valuation, uma Revolução na Infraestrutura de TI\n\nO anúncio do pedido de IPO da OpenAI nos EUA, mirando a marca histórica de US$ 1 trilhão, não é apenas um marco financeiro; é o sinal mais claro de que a Inteligência Artificial Generativa consolidou-se como a nova camada de computação global. Para CTOs e arquitetos de software, este movimento financeiro antecipa uma enxurrada de investimentos em infraestrutura de rede, silício customizado e, principalmente, em **padrões de arquitetura de software empresarial** mais robustos e escaláveis.\n\nCom maior capitalização, a OpenAI acelerará a entrega de modelos de fronteira (como GPT-5 e agentes autônomos complexos). No entanto, para as empresas colherem esses benefícios sem criar dependências tecnológicas críticas (vendor lock-in) ou comprometer a segurança, a arquitetura de sistemas precisa evoluir de chamadas de API ad-hoc para ecossistemas integrados e resilientes.\n\n---\n\n### Desacoplando a Inteligência: A Arquitetura de AI Gateway\n\nIntegrar APIs de LLM diretamente no código de produção é um antipadrão de arquitetura. Com o volume de requisições escalando pós-IPO, a resiliência operacional torna-se prioritária. A implementação de um **AI Gateway** (ou Gateway de IA) como um microsserviço intermediário é fundamental.\n\n#### Benefícios do AI Gateway Corporativo:\n1. **Roteamento Dinâmico e Fallback**: Se a API da OpenAI apresentar latência elevada ou erro 5xx, o gateway redireciona a carga automaticamente para modelos alternativos (como Anthropic Claude ou instâncias locais de LLaMA 3).\n2. **Gerenciamento de Rate Limits e Caching**: Implementação de cache semântico (usando bancos de dados vetoriais como Redis ou Pinecone) para evitar chamadas duplicadas e reduzir custos de tokens.\n3. **Segurança e Data Masking**: Filtro ativo de PII (Personally Identifiable Information) antes que os dados saiam do perímetro da empresa.\n\n```\n[Client Application]\n       │\n       ▼ (gRPC / HTTPS)\n[AI Gateway Microsserviço]\n       ├─── Caching Semântico (Redis)\n       ├─── DLP / Data Masking\n       └─── Roteador de Modelos (Circuit Breaker)\n                 ├───> OpenAI API (Primary)\n                 └───> Azure OpenAI / Local LLM (Fallback)\n```\n\n---\n\n### Modelagem de Fluxo: RAG (Retrieval-Augmented Generation) com Governança de Dados\n\nPara que os dados corporativos gerem valor real sem expor segredos comerciais, o padrão RAG continua sendo a melhor abordagem. Abaixo, mapeamos o fluxo ideal de dados orientado a eventos para enriquecimento de contexto de forma segura:\n\n1. **Ingestão**: Os sistemas transacionais (ERP, CRM) publicam eventos em um broker (Apache Kafka).\n2. **Processamento e Vetorização**: Um microsserviço de processamento de dados consome esses eventos, extrai o payload útil, gera os embeddings (via modelos locais ou APIs) e os armazena em um Vector DB.\n3. **Consumo Seguro**: Quando o usuário final faz uma requisição, o AI Gateway orquestra a busca vetorial para obter o contexto relevante, monta o prompt sanitizado e realiza a chamada à API externa.\n\nEste fluxo garante que os dados sensíveis nunca sejam utilizados para o treinamento público dos modelos da OpenAI, preservando a **soberania de dados** da companhia.\n\n---\n\n### Lições Práticas para a Engenharia de Software Pós-IPO da OpenAI\n\n* **Abstraia os Provedores de LLM**: Utilize frameworks de orquestração como LangChain, LlamaIndex ou Semantic Kernel, mas encapsule-os em contratos de interface de software próprios. O seu software deve ser agnóstico ao modelo subjacente.\n* **Monitore o Custo de Tokens por Unidade de Negócio**: Estabeleça observabilidade ponta a ponta (OpenTelemetry) para rastrear o consumo de tokens associado a IDs de correlação de transações.\n* **Prepare-se para Agentes de Software Autônomos**: A próxima onda pós-IPO será focada em 'AI Agents' que executam fluxos de trabalho complexos. Desenvolva APIs internas seguindo rigorosamente os princípios REST/gRPC e OpenAPI Specs, pois os agentes utilizarão essas especificações para interagir com seus sistemas legados.\n\nO valuation de US$ 1 trilhão da OpenAI reflete o valor gerado pela inteligência automatizada. Cabe aos líderes de tecnologia estruturar a arquitetura interna para que esse valor seja capturado com segurança, eficiência e máxima performance."
+    },
+    {
+      "id": "b1",
+      "titulo": "O Futuro do Software sob Medida",
+      "resumo": "Por que investir em sistemas personalizados é mais lucrativo do que assinar softwares engessados de prateleira.",
+      "categoria": "Mercado",
+      "data": "08/06/2026 às 15:30",
+      "autor": "Yugny Ohany Miotelo",
+      "leitura": "5 min"
+    },
+    {
+      "id": "b2",
+      "titulo": "Erros Comuns na Integração de ERPs",
+      "resumo": "Veja como evitar falhas graves ao conectar lojas virtuais, CRMs e faturadores no seu ERP corporativo.",
+      "categoria": "Sistemas",
+      "data": "05/06/2026 às 12:00",
+      "autor": "Yugny Ohany Miotelo",
+      "leitura": "8 min"
+    },
+    {
+      "id": "b3",
+      "titulo": "UX em Aplicativos Corporativos",
+      "resumo": "Como um bom design de interface para colaboradores eleva o faturamento e reduz o tempo de treinamento.",
+      "categoria": "Design",
+      "data": "01/06/2026 às 10:15",
+      "autor": "Yugny Ohany Miotelo",
+      "leitura": "4 min"
+    }
+  ],
+  "notificacoes": [
+    {
+      "id": "n1",
+      "titulo": "🚀 Lançamento KoreNexus",
+      "corpo": "Bem-vindos ao novo site KoreNexus! Layout minimalista, de alta performance e integrado.",
+      "data": "08/06/2026 às 18:00",
+      "enviadoPor": "admin@korenexus.com.br"
+    }
+  ]
+}

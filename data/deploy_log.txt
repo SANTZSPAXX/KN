@@ -1,0 +1,65 @@
+==========================================================
+🚀 Iniciando Processo de Build e Deploy Seguro para GitHub
+==========================================================
+Data e Hora: 2026-06-11 09:20:58
+Usuário Atual: root
+Diretório de Trabalho: /app/applet
+⚙️ Configurando safe.directory no Git corporativo...
+📦 Executando compilação do front-end (Vite)...
+
+> react-example@0.0.0 build
+> vite build && tsx generate-sitemap.ts && esbuild server.ts --bundle --platform=node --format=cjs --packages=external --sourcemap --outfile=dist/server.cjs
+
+vite v6.4.3 building for production...
+transforming...
+✓ 2341 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                              3.68 kB │ gzip:   1.32 kB
+dist/assets/index-CixkJ8r6.css             102.35 kB │ gzip:  14.76 kB
+dist/assets/purify.es-CKWrWwPe.js           28.15 kB │ gzip:  10.60 kB
+dist/assets/index.es-DX9S6Ub0.js           159.80 kB │ gzip:  53.58 kB
+dist/assets/html2canvas.esm-QH1iLAAe.js    202.38 kB │ gzip:  48.04 kB
+dist/assets/index-DOzJd36n.js            1,510.44 kB │ gzip: 410.23 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 11.22s
+==========================================
+🧭 Gerador Automático de Sitemap.xml para KoreNexus
+==========================================
+🧭 database path resolved dynamically from config.json: /app/applet/data/spreadsheet.json
+✅ Banco de dados offline carregado com sucesso de: /app/applet/data/spreadsheet.json
+💾 Sitemap.xml gravado com sucesso na RAIZ do projeto: /app/applet/sitemap.xml
+💾 Sitemap.xml gravado com sucesso na pasta PUBLIC do Vite: /app/applet/public/sitemap.xml
+💾 Sitemap.xml gravado de forma imediata na pasta DIST de build: /app/applet/dist/sitemap.xml
+------------------------------------------
+📊 Total de Rotas Geradas: 36
+   └─ Estáticas: 13
+   └─ Produtos: 4
+   └─ Ferramentas: 4
+   └─ Aplicativos: 3
+   └─ Blog: 12
+==========================================
+
+  dist/server.cjs      51.5kb
+  dist/server.cjs.map  83.5kb
+
+⚡ Done in 11ms
+✅ Build concluído com sucesso!
+⚙️ Purgando metadados git antigos para garantir conformidade...
+⚙️ Inicializando novo repositório Git local limpo...
+hint: Using 'master' as the name for the initial branch. This default branch name
+hint: is subject to change. To configure the initial branch name to use in all
+hint: of your new repositories, which will suppress this warning, call:
+hint: 
+hint: 	git config --global init.defaultBranch <name>
+hint: 
+hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+hint: 'development'. The just-created branch can be renamed via this command:
+hint: 
+hint: 	git branch -m <name>
+Initialized empty Git repository in /app/applet/.git/
+📂 Preparando arquivos para commit...
