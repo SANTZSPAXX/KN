@@ -1,0 +1,152 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // 1. catch-all default deny
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Phase 3: Primitive Definitions & Helpers
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isVerified() {
+      return isSignedIn() && request.auth.token.email_verified == true;
+    }
+
+    function isAdmin() {
+      return isVerified() && (
+        request.auth.token.email == "contato@korenexus.com.br" ||
+        request.auth.token.email.matches("(?i).+@korenexus\\.com\\.br$")
+      );
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches("^[a-zA-Z0-9_\\-]+$");
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    // Entity validation blueprints (Pillar 2)
+    function isValidProduto(data) {
+      return data.keys().hasAll(["id", "nome", "descricao", "categoria", "preco", "status"]) &&
+             data.keys().size() == 6 &&
+             data.id is string && data.id.size() <= 128 &&
+             data.nome is string && data.nome.size() <= 200 &&
+             data.descricao is string && data.descricao.size() <= 1500 &&
+             data.categoria is string && data.categoria.size() <= 100 &&
+             data.preco is string && data.preco.size() <= 100 &&
+             data.status is string && data.status.size() <= 50;
+    }
+
+    function isValidFerramenta(data) {
+      return data.keys().hasAll(["id", "nome", "tipo", "utilidade", "link", "status"]) &&
+             data.keys().size() == 6 &&
+             data.id is string && data.id.size() <= 128 &&
+             data.nome is string && data.nome.size() <= 200 &&
+             data.tipo is string && data.tipo.size() <= 100 &&
+             data.utilidade is string && data.utilidade.size() <= 1500 &&
+             data.link is string && data.link.size() <= 500 &&
+             data.status is string && data.status.size() <= 50;
+    }
+
+    function isValidAppModel(data) {
+      return data.keys().hasAll(["id", "nome", "plataforma", "descricao", "downloads", "detalhes"]) &&
+             (data.keys().size() == 6 || (data.keys().size() == 7 && data.keys().hasAny(["link"]))) &&
+             data.id is string && data.id.size() <= 128 &&
+             data.nome is string && data.nome.size() <= 200 &&
+             data.plataforma is string && data.plataforma.size() <= 100 &&
+             data.descricao is string && data.descricao.size() <= 1500 &&
+             data.downloads is string && data.downloads.size() <= 100 &&
+             data.detalhes is string && data.detalhes.size() <= 1000 &&
+             (!data.keys().hasAny(["link"]) || (data.link is string && data.link.size() <= 500));
+    }
+
+    function isValidPromocao(data) {
+      return data.keys().hasAll(["id", "titulo", "desconto", "validade", "cupom", "condicao"]) &&
+             data.keys().size() == 6 &&
+             data.id is string && data.id.size() <= 128 &&
+             data.titulo is string && data.titulo.size() <= 200 &&
+             data.desconto is string && data.desconto.size() <= 100 &&
+             data.validade is string && data.validade.size() <= 100 &&
+             data.cupom is string && data.cupom.size() <= 100 &&
+             data.condicao is string && data.condicao.size() <= 1000;
+    }
+
+    function isValidBlogPost(data) {
+      return data.keys().hasAll(["id", "titulo", "resumo", "categoria", "data", "autor", "leitura"]) &&
+             data.keys().size() >= 7 && data.keys().size() <= 10 &&
+             data.id is string && data.id.size() <= 128 &&
+             data.titulo is string && data.titulo.size() <= 300 &&
+             data.resumo is string && data.resumo.size() <= 1000 &&
+             data.categoria is string && data.categoria.size() <= 150 &&
+             data.data is string && data.data.size() <= 100 &&
+             data.autor is string && data.autor.size() <= 150 &&
+             data.leitura is string && data.leitura.size() <= 100 &&
+             (!data.keys().hasAny(["conteudo"]) || (data.conteudo is string && data.conteudo.size() <= 15000)) &&
+             (!data.keys().hasAny(["url"]) || (data.url is string && data.url.size() <= 500)) &&
+             (!data.keys().hasAny(["image"]) || (data.image is string && data.image.size() <= 500));
+    }
+
+    function isValidNotificacao(data) {
+      return data.keys().hasAll(["id", "titulo", "corpo", "data", "enviadoPor"]) &&
+             data.keys().size() == 5 &&
+             data.id is string && data.id.size() <= 128 &&
+             data.titulo is string && data.titulo.size() <= 250 &&
+             data.corpo is string && data.corpo.size() <= 1000 &&
+             data.data is string && data.data.size() <= 100 &&
+             data.enviadoPor is string && data.enviadoPor.size() <= 150;
+    }
+
+    // Match rules for Collections definitions (Pillars 3, 4, 8)
+    match /produtos/{produtoId} {
+      allow get, list: if true;
+      allow create: if isAdmin() && isValidId(produtoId) && isValidProduto(incoming());
+      allow update: if isAdmin() && isValidId(produtoId) && isValidProduto(incoming());
+      allow delete: if isAdmin() && isValidId(produtoId);
+    }
+
+    match /ferramentas/{ferramentaId} {
+      allow get, list: if true;
+      allow create: if isAdmin() && isValidId(ferramentaId) && isValidFerramenta(incoming());
+      allow update: if isAdmin() && isValidId(ferramentaId) && isValidFerramenta(incoming());
+      allow delete: if isAdmin() && isValidId(ferramentaId);
+    }
+
+    match /apps/{appId} {
+      allow get, list: if true;
+      allow create: if isAdmin() && isValidId(appId) && isValidAppModel(incoming());
+      allow update: if isAdmin() && isValidId(appId) && isValidAppModel(incoming());
+      allow delete: if isAdmin() && isValidId(appId);
+    }
+
+    match /promocoes/{promocaoId} {
+      allow get, list: if true;
+      allow create: if isAdmin() && isValidId(promocaoId) && isValidPromocao(incoming());
+      allow update: if isAdmin() && isValidId(promocaoId) && isValidPromocao(incoming());
+      allow delete: if isAdmin() && isValidId(promocaoId);
+    }
+
+    match /blog/{postId} {
+      allow get, list: if true;
+      allow create: if isAdmin() && isValidId(postId) && isValidBlogPost(incoming());
+      allow update: if isAdmin() && isValidId(postId) && isValidBlogPost(incoming());
+      allow delete: if isAdmin() && isValidId(postId);
+    }
+
+    match /notificacoes/{notificacaoId} {
+      allow get, list: if true;
+      allow create: if isAdmin() && isValidId(notificacaoId) && isValidNotificacao(incoming());
+      allow update: if isAdmin() && isValidId(notificacaoId) && isValidNotificacao(incoming());
+      allow delete: if isAdmin() && isValidId(notificacaoId);
+    }
+  }
+}
