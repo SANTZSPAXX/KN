@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" fill="none">
+  <defs>
+    <!-- Purple/Violet Gradient for K -->
+    <linearGradient id="purpleGradientFav" x1="125" y1="100" x2="250" y2="400" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#A855F7" />
+      <stop offset="50%" stop-color="#7C3AED" />
+      <stop offset="100%" stop-color="#3B82F6" />
+    </linearGradient>
+    <!-- Blue/Cyan Gradient for N -->
+    <linearGradient id="blueGradientFav" x1="250" y1="140" x2="400" y2="350" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#06B6D4" />
+      <stop offset="50%" stop-color="#3B82F6" />
+      <stop offset="100%" stop-color="#1E40AF" />
+    </linearGradient>
+    <!-- Connecting Connector Gradient -->
+    <linearGradient id="connectorGradientFav" x1="150" y1="200" x2="350" y2="250" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#7C3AED" />
+      <stop offset="100%" stop-color="#3B82F6" />
+    </linearGradient>
+    <!-- Glowing Layer Profile -->
+    <filter id="glowFav" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Stem of 'K' -->
+  <rect x="125" y="100" width="48" height="300" rx="24" fill="url(#purpleGradientFav)" />
+
+  <!-- Upper leg of 'K' -->
+  <path d="M 160 210 L 260 110 C 275 95, 305 95, 320 110 C 335 125, 335 155, 320 170 L 210 280 Z" fill="url(#purpleGradientFav)" />
+
+  <!-- Lower leg of 'K' -->
+  <path d="M 162 260 L 285 385 C 298 398, 320 398, 333 385 C 346 372, 346 350, 333 337 L 218 222 Z" fill="url(#purpleGradientFav)" />
+
+  <!-- Tech Connector Line -->
+  <path d="M 215 280 C 230 250, 270 170, 310 200 C 340 220, 280 280, 340 310" stroke="url(#connectorGradientFav)" stroke-width="12" stroke-linecap="round" fill="none" opacity="0.9" />
+
+  <!-- Stem of 'N' -->
+  <rect x="350" y="140" width="48" height="220" rx="24" fill="url(#blueGradientFav)" />
+
+  <!-- Diagonal leg of 'N' -->
+  <path d="M 270 185 C 270 155, 300 135, 325 155 L 374 240 L 374 350 L 325 350 Z" fill="url(#blueGradientFav)" opacity="0.95" />
+
+  <!-- Interactive Nodes -->
+  <circle cx="215" cy="280" r="14" fill="#FFFFFF" filter="url(#glowFav)" />
+  <circle cx="215" cy="280" r="8" fill="#7C3AED" />
+
+  <circle cx="270" cy="185" r="14" fill="#FFFFFF" filter="url(#glowFav)" />
+  <circle cx="270" cy="185" r="8" fill="#3B82F6" />
+
+  <circle cx="340" cy="310" r="14" fill="#FFFFFF" filter="url(#glowFav)" />
+  <circle cx="340" cy="310" r="8" fill="#06B6D4" />
+</svg>
