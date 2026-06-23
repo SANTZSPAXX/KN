@@ -10,3 +10,8 @@ data/config.json
 data/backups/
 data/deploy_log.txt
 
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
