@@ -1,0 +1,7 @@
+{
+  "name": "KoreNexus - Sistemas sob Medida",
+  "description": "Desenvolvimento de Sistemas sob medida, Produtos, Ferramentas, Apps, ChatKore, Portaria, WMS, Logística Integrada e Emissão de Notas Fiscais para a KoreNexus.",
+  "requestFramePermissions": [
+  ],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
