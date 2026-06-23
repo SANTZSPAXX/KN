@@ -1,0 +1,142 @@
+{
+  "entities": {
+    "Produto": {
+      "title": "Produto",
+      "description": "Produto comercializado pela KoreNexus no ERP",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "ID único do produto" },
+        "nome": { "type": "string", "description": "Nome do produto comercializado" },
+        "descricao": { "type": "string", "description": "Descrição detalhada dos recursos" },
+        "categoria": { "type": "string", "description": "Categoria do produto" },
+        "preco": { "type": "string", "description": "Preço do produto" },
+        "status": { "type": "string", "description": "Estado atual (Ativo/Inativo/Novo)" }
+      },
+      "required": ["id", "nome", "descricao", "categoria", "preco", "status"]
+    },
+    "Ferramenta": {
+      "title": "Ferramenta",
+      "description": "Ferramenta técnica integrada",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "ID exclusivo da ferramenta" },
+        "nome": { "type": "string", "description": "Nome da ferramenta" },
+        "tipo": { "type": "string", "description": "Tipo ou categoria" },
+        "utilidade": { "type": "string", "description": "Propósito funcional" },
+        "link": { "type": "string", "description": "Endereço ou rota associada" },
+        "status": { "type": "string", "description": "Fase de estabilidade" }
+      },
+      "required": ["id", "nome", "tipo", "utilidade", "link", "status"]
+    },
+    "AppModel": {
+      "title": "AppModel",
+      "description": "Aplicativo mobile ou de faturamento externo",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "ID único do app" },
+        "nome": { "type": "string", "description": "Nome do app" },
+        "plataforma": { "type": "string", "description": "Plataforma de destino (Android, iOS)" },
+        "descricao": { "type": "string", "description": "Propósito do app" },
+        "downloads": { "type": "string", "description": "Estimativa de downloads" },
+        "detalhes": { "type": "string", "description": "Vantagem técnica" },
+        "link": { "type": "string", "description": "Caminho ou link da Google Play Store" }
+      },
+      "required": ["id", "nome", "plataforma", "descricao", "downloads", "detalhes"]
+    },
+    "Promocao": {
+      "title": "Promocao",
+      "description": "Promoção vigente no ERP",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "titulo": { "type": "string" },
+        "desconto": { "type": "string" },
+        "validade": { "type": "string" },
+        "cupom": { "type": "string" },
+        "condicao": { "type": "string" }
+      },
+      "required": ["id", "titulo", "desconto", "validade", "cupom", "condicao"]
+    },
+    "BlogPost": {
+      "title": "BlogPost",
+      "description": "Artigo ou notícia do blog oficial",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "titulo": { "type": "string" },
+        "resumo": { "type": "string" },
+        "categoria": { "type": "string" },
+        "data": { "type": "string" },
+        "autor": { "type": "string" },
+        "leitura": { "type": "string" },
+        "conteudo": { "type": "string" },
+        "url": { "type": "string" },
+        "image": { "type": "string" }
+      },
+      "required": ["id", "titulo", "resumo", "categoria", "data", "autor", "leitura"]
+    },
+    "Notificacao": {
+      "title": "Notificacao",
+      "description": "Mensagem ou alerta global push",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "titulo": { "type": "string" },
+        "corpo": { "type": "string" },
+        "data": { "type": "string" },
+        "enviadoPor": { "type": "string" }
+      },
+      "required": ["id", "titulo", "corpo", "data", "enviadoPor"]
+    },
+    "Deal": {
+      "title": "Deal",
+      "description": "Negócio ou lead de vendas corporativas no funil de vendas integrado",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "ID exclusivo do negócio" },
+        "cliente": { "type": "string", "description": "Nome da empresa ou cliente prospectado" },
+        "titulo": { "type": "string", "description": "Título/Descrição da oportunidade" },
+        "valor": { "type": "number", "description": "Valor monetário estimado em reais" },
+        "contatoEmail": { "type": "string", "description": "Email de contato do cliente" },
+        "contatoTelefone": { "type": "string", "description": "Telefone de contato do cliente" },
+        "etapa": { "type": "string", "description": "Estágio atual do funil" },
+        "prioridade": { "type": "string", "description": "Nível de prioridade" },
+        "canal": { "type": "string", "description": "Canal de atração/aquisição" },
+        "observacoes": { "type": "string", "description": "Anotações adicionativas do vendedor" },
+        "dataCriacao": { "type": "string", "description": "Data de criação do negócio" },
+        "updatedAt": { "type": "string", "description": "Última data de atualização" }
+      },
+      "required": ["id", "cliente", "titulo", "valor", "etapa", "prioridade"]
+    }
+  },
+  "firestore": {
+    "/produtos/{produtoId}": {
+      "schema": { "$ref": "#/entities/Produto" },
+      "description": "Catálogo de soluções de ERP e ERP industrial da KoreNexus"
+    },
+    "/ferramentas/{ferramentaId}": {
+      "schema": { "$ref": "#/entities/Ferramenta" },
+      "description": "Utilitários e sistemas internos para automação e validação de Sefaz"
+    },
+    "/apps/{appId}": {
+      "schema": { "$ref": "#/entities/AppModel" },
+      "description": "Aplicações corporativas móveis"
+    },
+    "/promocoes/{promocaoId}": {
+      "schema": { "$ref": "#/entities/Promocao" },
+      "description": "Campanhas corporativas de descontos em implantação"
+    },
+    "/blog/{postId}": {
+      "schema": { "$ref": "#/entities/BlogPost" },
+      "description": "Notícias e tutoriais informativos de alta integridade técnica"
+    },
+    "/notificacoes/{notificacaoId}": {
+      "schema": { "$ref": "#/entities/Notificacao" },
+      "description": "Lista de mensagens globais emitidas pelo SSE do barramento"
+    },
+    "/deals/{dealId}": {
+      "schema": { "$ref": "#/entities/Deal" },
+      "description": "Lista de negócios e oportunidades cadastradas no Funil de Vendas KoreCRM"
+    }
+  }
+}
