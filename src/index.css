@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  
+  --color-brand-purple: #2563eb; /* Sleek Royal Blue */
+  --color-brand-blue: #3b82f6;   /* Sleek Accent Blue */
+  --color-brand-dark: #0A0D14;   /* Sleek Core Dark */
+}
+
+/* Custom scrollbar matching sleek theme */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(10, 13, 20, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(37, 99, 235, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(37, 99, 235, 0.6);
+}
+
+/* Custom styles for glowing glass effects */
+.glass-panel {
+  background: rgba(17, 22, 34, 0.75);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #60a5fa 0%, #34d399 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Custom animations overlay */
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 0.15; transform: scale(1); }
+  50% { opacity: 0.25; transform: scale(1.05); }
+}
+
+.ambient-glow {
+  animation: pulse-subtle 8s infinite ease-in-out;
+}
+
+/* Media query to optimize breadcrumbs on very small mobile screens (<480px) */
+@media (max-width: 480px) {
+  #site-breadcrumbs {
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+    margin-bottom: 0.75rem !important;
+    margin-left: 0.25rem !important;
+    margin-right: 0.25rem !important;
+    gap: 0.25rem !important;
+  }
+}
+
+/* Force robust truncation on breadcrumb text elements to prevent any layout wrap */
+#site-breadcrumbs span,
+#site-breadcrumbs button {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* Limit the maximum width of breadcrumb text spans on ultra-small screens (<350px) to keep structural hierarchy and icons visible */
+@media (max-width: 350px) {
+  #site-breadcrumbs span,
+  #site-breadcrumbs .truncate {
+    max-width: 40px !important;
+  }
+  #site-breadcrumbs svg {
+    flex-shrink: 0 !important;
+    min-width: 12px !important;
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+  }
+}
+
+/* WCAG Contrast Enhancements (Ensures 4.5:1 contrast ratio on dark background) */
+.text-slate-500 {
+  color: #94a3b8 !important; /* Lighter slate for robust readability */
+}
+.text-slate-400 {
+  color: #cbd5e1 !important; /* Increased brightness for AA compliance */
+}
+.text-slate-350 {
+  color: #e2e8f0 !important;
+}
+.text-slate-300 {
+  color: #f1f5f9 !important;
+}
+.text-slate-200 {
+  color: #f8fafc !important;
+}
+
